@@ -146,6 +146,9 @@ class CreatePersonTask extends DefaultTask {
         personFly.insertBefore("System.out.println(\"起飞之前准备降落伞\");");
         personFly.insertAfter("System.out.println(\"成功落地。。。。\");");
 
+        //修改修改父类
+        cc = pool.get("com.javassist.demo.TestActivity");
+        cc.replaceClassName("android.app.Activity", "com.tencent.shadow.core.runtime.ShadowActivity");
         cc.writeFile(getProject().getBuildDir().absolutePath + "/intermediates/classes/debug");
     }
 }
